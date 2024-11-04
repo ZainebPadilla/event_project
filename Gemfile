@@ -59,3 +59,4 @@ group :test do
 end
 
 ruby '3.2.2'
+gem 'dotenv-rails'

@@ -80,6 +80,5 @@ test:
 #
 production:
   <<: *default
-  database: event_project_production
-  username: event_project
-  password: <%= ENV["EVENT_PROJECT_DATABASE_PASSWORD"] %>
+  url: <%= ENV['DATABASE_URL'] %>
+  pool: 5

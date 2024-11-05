@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2024_11_05_121724) do
+ActiveRecord::Schema[7.2].define(version: 2024_11_05_194509) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -34,6 +34,8 @@ ActiveRecord::Schema[7.2].define(version: 2024_11_05_121724) do
     t.bigint "admin_id_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "admin_id", null: false
+    t.index ["admin_id"], name: "index_events_on_admin_id"
     t.index ["admin_id_id"], name: "index_events_on_admin_id_id"
   end
 
@@ -54,5 +56,6 @@ ActiveRecord::Schema[7.2].define(version: 2024_11_05_121724) do
 
   add_foreign_key "attendances", "events"
   add_foreign_key "attendances", "users"
+  add_foreign_key "events", "users", column: "admin_id"
   add_foreign_key "events", "users", column: "admin_id_id"
 end

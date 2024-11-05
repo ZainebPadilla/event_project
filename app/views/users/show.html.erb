@@ -1,0 +1,21 @@
+<h1>Profil de <%= @user.first_name %> <%= @user.last_name %></h1>
+
+<p><strong>Prénom:</strong> <%= @user.first_name %></p>
+<p><strong>Nom:</strong> <%= @user.last_name %></p>
+<p><strong>Description:</strong> <%= @user.description %></p>
+<p><strong>Email:</strong> <%= @user.email %></p>
+
+<h2>Événements créés par <%= @user.first_name %></h2>
+<% if @events.any? %>
+  <ul>
+    <% @events.each do |event| %>
+      <li>
+        <%= link_to event.title, event_path(event) %>
+      </li>
+    <% end %>
+  </ul>
+<% else %>
+  <p>Aucun événement créé pour le moment.</p>
+<% end %>
+
+<%= link_to "Modifier l'email et le mot de passe", edit_user_registration_path, class: "btn btn-primary" %>

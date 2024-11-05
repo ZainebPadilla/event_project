@@ -1,2 +1,69 @@
-<h1>Events#index</h1>
-<p>Find me in app/views/events/index.html.erb</p>
+    
+
+   
+
+      <html lang="en"><head><style>body {transition: opacity ease-in 0.2s; } 
+body[unresolved] {opacity: 0; display: block; overflow: hidden; position: relative; } 
+</style>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="/docs/4.0/assets/img/favicons/favicon.ico">
+
+    <title>Jumbotron Template for Bootstrap</title>
+
+
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet">
+  </head>
+
+  <body>
+
+     <main role="main">
+
+      <!-- Main jumbotron for a primary marketing message or call to action -->
+       <div class="jumbotron">
+        <div class="container">
+          <h1 class="display-3">Welcome to event's index!</h1>
+          <p>You can find events that might interest you, or maybe you want create your own events ? </p>
+          <p><%= link_to "Create Your Event »", new_event_path, class: "btn btn-primary btn-lg", role: "button" %></p>
+        </div>
+      </div>
+
+      <div class="container">
+        <!-- Example row of columns -->
+        <div class="row">
+          
+            <% @events.each do |event| %>
+          
+          <div class="col-md-4">
+            <h2><%=event.title%></h2>
+            <p><%= event.description %></p>
+            <p><%= event.location %> - <%= event.start_date.strftime("%B %d, %Y") %></p>
+            <p><%= event.duration %> minutes - $<%= event.price %></p>
+            <p><%= link_to "View details", event_path(event), class: "btn-secondary" %></p>
+          </div>
+          <% end %>
+        </div>
+
+        <hr>
+
+      </div> <!-- /container -->
+
+    </main>
+
+    <footer class="container">
+      <p>© Company 2017-2018</p>
+    </footer>
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+   
+  
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9V7UpNNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+  
+
+<iframe id="gZyaKd36" frameborder="0" src="chrome-extension://ekhagklcjbdpajgpjgmbionohlpdbjgc/translateSandbox/translateSandbox.html" style="width: 0px; height: 0px; display: none;"></iframe></body></html>

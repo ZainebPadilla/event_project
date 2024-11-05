@@ -8,27 +8,36 @@
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
 
-User.create!(
-  email: "user1@yopmail.com",
-  encrypted_password: "password1",
-  description: "First user description",
-  first_name: "Jose",
-  last_name: "Doe"
+require 'faker'
+
+User.destroy_all
+Event.destroy_all
+
+admin_user = User.create!(
+  email: Faker::Internet.unique.email,
+  password: Faker::Internet.password(min_length: 6),
+  first_name: Faker::Name.first_name,
+  last_name: Faker::Name.last_name
 )
 
-User.create!(
-  email: "user2@yopmail.com",
-  encrypted_password: "password2",
-  description: "Second user description",
-  first_name: "Josiane",
-  last_name: "Doe"
-)
-Event.create!(
-  start_date: Time.now + 1.day,
-  duration: 60,
-  title: "Sample Event",
-  description: "This is a sample event with a valid description length.",
-  price: 100,
-  location: "Rennes",
-  admin: User.first
-)
+
+5.times do
+  Event.create!(
+    title: Faker::Lorem.sentence(word_count: 3),
+    description: Faker::Lorem.paragraph(sentence_count: 5),
+    location: Faker::Address.city,
+    start_date: Faker::Time.forward(days: 23, period: :evening),
+    duration: [30, 60, 90, 120].sample,
+    price: rand(1..500),
+    admin: admin_user 
+  )
+end
+
+5.times do
+  User.create!(
+    email: Faker::Internet.unique.email,
+    first_name: Faker::Name.first_name,
+    last_name: Faker::Name.last_name,
+    password: 'password123'
+  )
+end

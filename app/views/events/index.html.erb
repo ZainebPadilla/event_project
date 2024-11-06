@@ -1,20 +1,18 @@
-    
 
-   
 
-      <html lang="en"><head><style>body {transition: opacity ease-in 0.2s; } 
+<html lang="en"><head><style>body {transition: opacity ease-in 0.2s; } 
 body[unresolved] {opacity: 0; display: block; overflow: hidden; position: relative; } 
 </style>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <link rel="icon" href="/docs/4.0/assets/img/favicons/favicon.ico">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="description" content="">
+<meta name="author" content="">
+<link rel="icon" href="/docs/4.0/assets/img/favicons/favicon.ico">
 
-    <title>Jumbotron Template for Bootstrap</title>
+<title>Jumbotron Template for Bootstrap</title>
 
 
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet">
   </head>
 
   <body>
@@ -35,20 +33,20 @@ body[unresolved] {opacity: 0; display: block; overflow: hidden; position: relati
         <div class="row">
           
             <% @events.each do |event| %>
-          
-          <div class="col-md-4">
+
+        <div class="col-md-4">
             <h2><%=event.title%></h2>
             <p><%= event.description %></p>
             <p><%= event.location %> - <%= event.start_date.strftime("%B %d, %Y") %></p>
             <p><%= event.duration %> minutes - $<%= event.price %></p>
             <p><%= link_to "View details", event_path(event), class: "btn-secondary" %></p>
-          </div>
-          <% end %>
+        </div>
+        <% end %>
         </div>
 
         <hr>
 
-      </div> <!-- /container -->
+    </div> <!-- /container -->
 
     </main>
 

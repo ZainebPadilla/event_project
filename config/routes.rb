@@ -17,5 +17,5 @@ Rails.application.routes.draw do
 
   root "events#index"
   resources :events
-  resources :users
+  resources :users, only: [:show] #sinon me met une erreur sur le fait qu'il y ai pas d'index
 end

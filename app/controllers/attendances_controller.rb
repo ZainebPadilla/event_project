@@ -12,6 +12,7 @@ class AttendancesController < ApplicationController
   end
 
   def create
+    
   end
 
   private

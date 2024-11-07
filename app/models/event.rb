@@ -24,8 +24,5 @@ class Event < ApplicationRecord
     errors.add(:duration, "is not a multiple of 5") if duration.present? && (duration % 5 != 0) #si different de 0
   end
 
-  def is_free?
-    price == 0
-  end
   
 end

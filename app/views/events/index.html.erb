@@ -38,7 +38,7 @@ body[unresolved] {opacity: 0; display: block; overflow: hidden; position: relati
             <h2><%=event.title%></h2>
             <p><%= event.description %></p>
             <p><%= event.location %> - <%= event.start_date.strftime("%B %d, %Y") %></p>
-            <p><%= event.duration %> minutes - $<%= event.price %></p>
+            <p><%= event.duration %> minutes - <%= event.price %>€</p>
             <p><%= link_to "View details", event_path(event), class: "btn-secondary" %></p>
         </div>
         <% end %>

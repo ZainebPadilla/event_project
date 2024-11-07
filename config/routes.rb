@@ -17,7 +17,7 @@ Rails.application.routes.draw do
   # root "posts#index"
 
   root "events#index"
-  resources :events
+
   resources :users, only: [:show] #sinon me met une erreur sur le fait qu'il y ai pas d'index
 
   scope '/checkout' do
@@ -27,7 +27,7 @@ Rails.application.routes.draw do
 end
 
 resources :events do
-  resources :attendances, only: [:index]
+  resources :attendances, only: [:index, :new, :create]
 end
 
 end

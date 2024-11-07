@@ -7,8 +7,8 @@
 <p><strong>Auteur:</strong> <%= @event.admin.first_name %> <%= @event.admin.last_name %> </p>
 
 
-<% if user_signed_in? && @event.admin != current_user && !@event.attendees.include?(current_user) %>
-  <%= link_to "Rejoindre l'événement", new_event_attendance_path(@event), class: "btn btn-primary" %>
+<% if current_user && !@event.attendees.include?(current_user) %>
+    <%= link_to 'Rejoindre l\'événement', event_attendances_path(@event), method: :post, class: "btn btn-primary" %>
 <% end %>
 
 <%= button_to "Passer commande ", checkout_create_path(total: @event.price, event_id: @event.id), class: "btn btn-primary",  data: {turbo: false} %>

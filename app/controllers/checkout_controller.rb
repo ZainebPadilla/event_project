@@ -31,12 +31,25 @@ class CheckoutController < ApplicationController
 
   def success
     @session = Stripe::Checkout::Session.retrieve(params[:session_id])
-    @payment_intent = Stripe::PaymentIntent.retrieve(@session.payment_intent)
-    @user = current_user
-    @event_id = @session.metadata.event_id
-    if @payment_intent.status == 'succeeded'
-      Attendance.create(user_id: @user.id, event_id: @event_id, stripe_customer_id: @session.customer)
+  @payment_intent = Stripe::PaymentIntent.retrieve(@session.payment_intent)
+  @user = current_user
+  @event_id = @session.metadata.event_id
+  
+  if @payment_intent.status == 'succeeded'
+    attendance = Attendance.new(
+      user_id: @user.id, 
+      event_id: @event_id, 
+      stripe_customer_id: @session.customer
+    )
+    
+    if attendance.save
+      # Inscription réussie, redirection avec succès
+      redirect_to event_path(@event_id), notice: "Inscription réussie!"
+    else
+      # Gestion de l'erreur de création
+      redirect_to event_path(@event_id), alert: "Erreur lors de la création de l'inscription : #{attendance.errors.full_messages.join(", ")}"
     end
+  end
   end
 
   def cancel

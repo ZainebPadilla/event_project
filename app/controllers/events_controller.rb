@@ -21,7 +21,7 @@ class EventsController < ApplicationController
     if @event.save
       redirect_to @event, notice: "Bravo ! l'event a bien été créé"
     else
-      render new_event_path, alert: "Une erreur est survenue lors de la création de l'événement. Veuillez réessayer."
+      render :new, alert: "Une erreur est survenue lors de la création de l'événement. Veuillez réessayer."
 
     end
   end

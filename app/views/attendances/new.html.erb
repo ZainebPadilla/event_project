@@ -1,0 +1,4 @@
+<h1>Inscription pour <%= @event.title %></h1>
+<p>Prix de l'événement : <%= number_to_currency(@event.price, unit: "€") %></p>
+
+<%= button_to "Payer et rejoindre l'événement", checkout_create_path(total: @event.price, event_id: @event.id), method: :post, class: "btn btn-primary" %>

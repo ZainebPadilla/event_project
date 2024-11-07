@@ -71,3 +71,6 @@ end
 gem 'mailjet'
 
 gem 'faker'
+
+gem 'stripe'
+gem 'table_print' 

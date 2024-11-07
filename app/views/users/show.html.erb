@@ -6,9 +6,9 @@
 <p><strong>Email:</strong> <%= @user.email %></p>
 
 <h2>Événements créés par <%= @user.first_name %></h2>
-<% if @events.any? %>
+<% if @organized_events.any? %>
   <ul>
-    <% @events.each do |event| %>
+    <% @organized_events.each do |event| %>
       <li>
         <%= link_to event.title, event_path(event) %>
       </li>

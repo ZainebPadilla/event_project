@@ -3,4 +3,17 @@
 <p><strong>Location:</strong> <%= @event.location %></p>
 <p><strong>Start Date:</strong> <%= @event.start_date %></p>
 <p><strong>Duration:</strong> <%= @event.duration %> hours</p>
-<p><strong>Price:</strong> $<%= @event.price %></p>
+<p><strong>Price:</strong> <%= @event.price %>€</p>
+<p><strong>Auteur:</strong> <%= @event.admin.first_name %> <%= @event.admin.last_name %> </p>
+
+
+<% if user_signed_in? && @event.admin != current_user && !@event.attendees.include?(current_user) %>
+  <%= link_to "Rejoindre l'événement", new_event_attendance_path(@event), class: "btn btn-primary" %>
+<% end %>
+
+<%= button_to "Passer commande ", checkout_create_path(total: @event.price, event_id: @event.id), class: "btn btn-primary",  data: {turbo: false} %>
+
+
+<% if current_user == @event.admin %>
+  <%= link_to 'Mon espace événement', event_attendances_path(@event) %>
+<% end %>
